@@ -5,15 +5,15 @@ package com.app.homy.common.dto;
  *
  * @param <T>
  */
-public class ServiceResponse <T> extends BaseServiceResponse {
+public class HomiServiceResponse <T> extends BaseServiceResponse {
 
 	private T response;
 
-	public ServiceResponse() {
+	public HomiServiceResponse() {
 
 	}
 
-	public ServiceResponse(T val) {
+	public HomiServiceResponse(T val) {
 		this.response = val;
 	}
 
@@ -37,7 +37,7 @@ public class ServiceResponse <T> extends BaseServiceResponse {
 
 	@Override
 	public String toString() {
-		return "ServiceResponse [response=" + response + "]," + super.toString();
+		return "HomiServiceResponse [response=" + response + "]," + super.toString();
 	}
 
 

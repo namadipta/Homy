@@ -3,6 +3,8 @@ package com.app.homy.common.response.dto;
 import java.io.Serializable;
 import java.util.List;
 
+import org.springframework.util.CollectionUtils;
+
 import com.app.homy.common.dto.Customer;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -40,6 +42,9 @@ public class CustomerResponseDTO implements Serializable{
 	 * @return the customerList
 	 */
 	public List<Customer> getCustomerList() {
+		if(CollectionUtils.isEmpty(customerList)) {
+			return null;
+		}
 		return customerList;
 	}
 

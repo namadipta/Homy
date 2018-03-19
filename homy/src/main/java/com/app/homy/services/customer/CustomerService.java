@@ -1,10 +1,9 @@
-package com.app.homy.services;
+package com.app.homy.services.customer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.app.homy.common.dto.Customer;
-import com.app.homy.common.dto.ServiceResponse;
+import com.app.homy.common.dto.HomiServiceResponse;
 import com.app.homy.common.response.dto.CustomerResponseDTO;
 import com.app.homy.repository.customer.CustomerRepository;
 
@@ -18,17 +17,17 @@ public class CustomerService {
 	@Autowired
 	private CustomerRepository customerRepository;
 	
-	public ServiceResponse<CustomerResponseDTO>  fetchAllCustomer(){
-		ServiceResponse<CustomerResponseDTO>  customerServiceResponce=new ServiceResponse<CustomerResponseDTO>();
+	public HomiServiceResponse<CustomerResponseDTO>  fetchAllCustomer(){
+		HomiServiceResponse<CustomerResponseDTO>  homiServiceResponse=new HomiServiceResponse<CustomerResponseDTO>();
 		CustomerResponseDTO customerResponseDTO=new CustomerResponseDTO();
 		customerResponseDTO.setCustomerList(customerRepository.findAllCustomer());
-		customerServiceResponce.setResponse(customerResponseDTO);
-		return customerServiceResponce;
+		homiServiceResponse.setResponse(customerResponseDTO);
+		return homiServiceResponse;
 	}
 	
 	
-	public ServiceResponse<CustomerResponseDTO>  findCustomerById(final Integer customerId ){
-		ServiceResponse<CustomerResponseDTO>  customerServiceResponce=new ServiceResponse<CustomerResponseDTO>();
+	public HomiServiceResponse<CustomerResponseDTO>  findCustomerById(final Integer customerId ){
+		HomiServiceResponse<CustomerResponseDTO>  customerServiceResponce=new HomiServiceResponse<CustomerResponseDTO>();
 		
 		CustomerResponseDTO customerResponseDTO=new CustomerResponseDTO();
 
@@ -38,8 +37,8 @@ public class CustomerService {
 	}
 
 
-	public ServiceResponse<CustomerResponseDTO> findCustomerByEmail(final String customerEmail) {
-		ServiceResponse<CustomerResponseDTO>  customerServiceResponce=new ServiceResponse<CustomerResponseDTO>();
+	public HomiServiceResponse<CustomerResponseDTO> findCustomerByEmail(final String customerEmail) {
+		HomiServiceResponse<CustomerResponseDTO>  customerServiceResponce=new HomiServiceResponse<CustomerResponseDTO>();
 		
 		CustomerResponseDTO customerResponseDTO=new CustomerResponseDTO();
 
@@ -48,8 +47,8 @@ public class CustomerService {
 		return customerServiceResponce;
 	}
 	
-	public ServiceResponse<CustomerResponseDTO> findCustomerByNumber(final String customerNumber) {
-		ServiceResponse<CustomerResponseDTO>  customerServiceResponce=new ServiceResponse<CustomerResponseDTO>();
+	public HomiServiceResponse<CustomerResponseDTO> findCustomerByNumber(final String customerNumber) {
+		HomiServiceResponse<CustomerResponseDTO>  customerServiceResponce=new HomiServiceResponse<CustomerResponseDTO>();
 		
 		CustomerResponseDTO customerResponseDTO=new CustomerResponseDTO();
 

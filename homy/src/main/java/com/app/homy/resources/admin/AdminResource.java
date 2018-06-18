@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.app.homy.common.dto.HomiServiceResponse;
-import com.app.homy.common.dto.Services;
-import com.app.homy.common.response.dto.CustomerResponseDTO;
-import com.app.homy.common.response.dto.ServiceResponseDTO;
-import com.app.homy.exception.bussiness.BusinessException;
+import com.app.homy.common.context.LogContext;
+import com.app.homy.common.exception.BusinessException;
+import com.app.homy.dto.services.ServiceResponseDTO;
+import com.app.homy.dto.services.ServicesRequest;
+import com.app.homy.response.dto.common.HomiServiceResponse;
 import com.app.homy.services.customer.admin.AdminService;
 
 /**
@@ -30,21 +30,28 @@ public class AdminResource {
 	/**
 	 * This method is used to fetch all type of services present
 	 * 
-	 * @return 
+	 * @return HomiServiceResponse<ServiceResponseDTO>
 	 * 
 	 */
 	@RequestMapping("/fetch-all-services")
 	public  HomiServiceResponse<ServiceResponseDTO> fetchAllServices() throws BusinessException{
-		return adminService.fetchAllServices();
+		HomiServiceResponse<ServiceResponseDTO> homiServiceResponse=new HomiServiceResponse<ServiceResponseDTO> ();
+		homiServiceResponse.setTransactionId(LogContext.getLogContext().getTransactionId());
+		homiServiceResponse.setResponse(adminService.fetchAllServices());
+		return homiServiceResponse;
 		
 	}
 	/**
-	 * @param services
-	 * @return
+	 * @param servicesRequest
+	 * @return HomiServiceResponse<ServiceResponseDTO>
+	 * @throws BusinessException 
 	 */
 	@RequestMapping(method=RequestMethod.POST,value="/add-new-service")
-	public Integer addService(@RequestBody Services services){
-		return adminService.addService(services);
+	public  HomiServiceResponse<ServiceResponseDTO> addService(@RequestBody ServicesRequest servicesRequest) throws BusinessException{
+		HomiServiceResponse<ServiceResponseDTO> homiServiceResponse=new HomiServiceResponse<ServiceResponseDTO> ();
+		homiServiceResponse.setTransactionId("");
+		homiServiceResponse.setResponse(adminService.addService(servicesRequest));
+		return homiServiceResponse;
 		
 	}
 }

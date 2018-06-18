@@ -3,9 +3,9 @@ package com.app.homy.services.customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.app.homy.common.dto.HomiServiceResponse;
-import com.app.homy.common.response.dto.CustomerResponseDTO;
+import com.app.homy.dto.customer.CustomerResponseDTO;
 import com.app.homy.repository.customer.CustomerRepository;
+import com.app.homy.response.dto.common.HomiServiceResponse;
 
 /**
  * @author namadipta

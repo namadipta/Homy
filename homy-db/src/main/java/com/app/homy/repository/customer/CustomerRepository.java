@@ -5,13 +5,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.app.homy.common.dto.Customer;
+import com.app.homy.dto.customer.Customer;
 import com.app.homy.mapper.customer.CustomerMapper;
 
 /**
  * @author namadipta
  *
- * Repository to interact with all types of Customer Data
+ * Repository to interact with all types of HomyPartner Data
  */
 @Repository
 public class CustomerRepository {

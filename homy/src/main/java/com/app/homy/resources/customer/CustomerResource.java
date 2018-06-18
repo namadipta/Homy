@@ -9,10 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.app.homy.common.dto.Customer;
-import com.app.homy.common.dto.HomiServiceResponse;
-import com.app.homy.common.response.dto.CustomerResponseDTO;
-import com.app.homy.exception.bussiness.BusinessException;
+import com.app.homy.dto.customer.Customer;
+import com.app.homy.dto.customer.CustomerResponseDTO;
+import com.app.homy.response.dto.common.HomiServiceResponse;
 import com.app.homy.services.customer.CustomerService;
 
 /**
@@ -33,7 +32,7 @@ public class CustomerResource {
 	 * 
 	 */
 	@RequestMapping("/fetch-all-customer")
-	public  HomiServiceResponse<CustomerResponseDTO> fetchAllCustomer() throws BusinessException{
+	public  HomiServiceResponse<CustomerResponseDTO> fetchAllCustomer(){
 		return customerService.fetchAllCustomer();
 		
 	}
